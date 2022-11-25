@@ -1,18 +1,19 @@
 var defaults = require("./wdio.conf.js");
+var test_config = require("./test.conf.js");
+
+
+var test_config2 = require("./test-parallel.conf.js");
+var test_local = require("./test-local.conf.js");
+var test_loca_parallel=require("./test-parallel-local.conf");
+
+
+
 var _ = require("lodash");
 
 var overrides = {
   onBrowserstack: true,
   
-  user: process.env.BROWSERSTACK_USER,
-  key: process.env.BROWSERSTACK_ACCESSKEY,
-  
-  commonCapabilities: {
-    "browserstack.debug": true,
-    name : require("minimist")(process.argv.slice(2))["bstack-session-name"] || "default_name",
-    build: process.env.BROWSERSTACK_BUILD_NAME || "browserstack-examples-appium-webdriverio" + " - " + new Date().getTime(),
-    project: "browserstack-examples-appium-webdriverio",    
-  },
+
 
   services: ["browserstack"],
 
@@ -58,4 +59,5 @@ var overrides = {
   },
 };
 
-exports.config = _.defaultsDeep(overrides, defaults.config);
+exports.config = _.defaultsDeep(overrides, test_config.config);
+

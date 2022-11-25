@@ -10,32 +10,27 @@ var overrides = {
     "./test/specs/cart/*.spec.js",
   ],
 
-  capabilities: [
-    {
-      maxInstances: 2,
-      device: "Samsung Galaxy A51",
-      os_version: "10.0",
-      app: process.env.BROWSERSTACK_ANDROID_APP_ID,
-      autoGrantPermissions: true,
-      platformName: "Android",
-    },
-    {
-      maxInstances: 2,
-      device: "iPhone 12 Pro",
-      platformName: "iOS",
-      os_version: "14",
-      gpsEnabled: "true",
-      automationName: "XCUITest",
-      app: process.env.BROWSERSTACK_IOS_APP_ID,
-    },
-  ],
+  
 };
 
 const tmpConfig = _.defaultsDeep(overrides, defaults.config);
 
-tmpConfig.capabilities.forEach((caps) => {
-  for (const i in tmpConfig.commonCapabilities)
-    caps[i] = caps[i] || tmpConfig.commonCapabilities[i];
-});
+
+
+for (let i = 0; i < tmpConfig.capabilities.length; i++) {
+  
+  if(tmpConfig.capabilities[i].platformName==="Android")
+  {var x=Object.assign({},tmpConfig.capabilities[i],{autoGrantPermissions:true,maxInstances:2});
+  tmpConfig.capabilities[i]=x;
+ }
+  else {
+    var x=Object.assign({},tmpConfig.capabilities[i],{gpsEnabled:true,automationName:"XCUITest",maxInstances:2});
+    tmpConfig.capabilities[i]=x;
+   }
+  
+}
+
+
+
 
 exports.config = tmpConfig;
