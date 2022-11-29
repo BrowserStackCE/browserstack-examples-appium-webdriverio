@@ -8,10 +8,38 @@ const parallelConfig = {
             os_version: "10.0",
             app: "bs://073a9a03ef8db1031b8111bf43e75768187d9600",
             platformName: "Android",
-            // 'browserstack.local': true,
-
-          }
+          },
+          {
+            device: "Google Pixel 7",
+            os_version: "13.0",
+            app:"bs://073a9a03ef8db1031b8111bf43e75768187d9600",
+            platformName: "Android",
+          },
+          {
+            device: "OnePlus 9",
+            os_version: "11.0",
+            app: "bs://073a9a03ef8db1031b8111bf43e75768187d9600",
+            platformName: "Android",
+          },
+          {
+            device: "iPhone 14",
+            os_version: "16.0",
+            app: "bs://c82f54907d31d3815ec889014ca926dd563caca0",
+            platformName: "iOS",
+          },
+          
     ],
+    services: [
+        [
+          'browserstack',
+          {
+            browserstackLocal: true,
+            opts: {
+              forcelocal: false,
+            }
+          },
+        ],
+      ],
     commonCapabilities: {
       "browserstack.debug": true,
       name : require("minimist")(process.argv.slice(2))["bstack-session-name"] || "default_name",

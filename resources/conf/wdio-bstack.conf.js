@@ -1,13 +1,5 @@
 var defaults = require("./wdio.conf.js");
 var test_config = require("./test.conf.js");
-
-
-var test_config2 = require("./test-parallel.conf.js");
-var test_local = require("./test-local.conf.js");
-var test_loca_parallel=require("./test-parallel-local.conf");
-
-
-
 var _ = require("lodash");
 
 var overrides = {

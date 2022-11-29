@@ -8,26 +8,9 @@ const parallelConfig = {
             os_version: "10.0",
             app: "bs://<android-app-id>",
             platformName: "Android",
-          },
-          {
-            device: "Google Pixel 7",
-            os_version: "13.0",
-            app: "bs://<android-app-id>",
-            platformName: "Android",
-          },
-          {
-            device: "OnePlus 9",
-            os_version: "11.0",
-            app: "bs://<android-app-id>",
-            platformName: "Android",
-          },
-          {
-            device: "iPhone 14",
-            os_version: "16",
-            app: "bs://<ios-app-id>",
-            platformName: "iOS",
-          },
-          
+            // 'browserstack.local': true,
+
+          }
     ],
     commonCapabilities: {
       "browserstack.debug": true,
@@ -44,4 +27,4 @@ const parallelConfig = {
     for (var i in exports.config.commonCapabilities)
       caps[i] = caps[i] || exports.config.commonCapabilities[i] ;
   });
-  
+  // console.log(exports.config.capabilities);

@@ -1,16 +1,30 @@
+
+timeStamp = new Date().getTime();
 const parallelConfig = {
   user: process.env.BROWSERSTACK_USERNAME,
   key: process.env.BROWSERSTACK_ACCESS_KEY,
   hostname: 'hub.browserstack.com',
+  
   capabilities: [
       {
           device: "Samsung Galaxy A51",
           os_version: "10.0",
-          app: "bs://073a9a03ef8db1031b8111bf43e75768187d9600",
+          app: "bs://<android-app-id>",
           platformName: "Android",
-          "browserstack.local": true,
+          // "browserstack.local": true,
 
         }
+  ],
+  services: [
+    [
+      'browserstack',
+      {
+        browserstackLocal: true,
+        opts: {
+          forcelocal: false,
+        }
+      },
+    ],
   ],
   commonCapabilities: {
     "browserstack.debug": true,
