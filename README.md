@@ -146,12 +146,11 @@ In this section, we will run a single test on an Android device on Browserstack.
 
    - To run the default test scenario (e.g. End to End Scenario) on a BrowserStack device, use the following command:
       ```sh
-      cp resources/conf/test-single.conf.js resources/conf/test.conf.js && npm run bstack-single
+      npm run bstack-single
       ```
   - To run a specific test scenario, use the following command with the additional 'spec' argument:
     ```sh
-    cp resources/conf/test-single.conf.js resources/conf/test.conf.js && npm run bstack-suite -- -- spec orders
-    
+    npm run bstack-suite -- -- spec orders
     ```
 
 ### Run the entire test suite in parallel on a single BrowserStack device
@@ -162,7 +161,7 @@ In this section, we will run the tests in parallel on a single device on Browser
 
   - To run the entire test suite in parallel on a single BrowserStack device type, use the following command:
     ```sh
-    cp resources/conf/test-single.conf.js resources/conf/test.conf.js && npm run bstack-parallel
+    npm run bstack-parallel
     ```
 > Note: By default, this execution would run maximum 2 test threads in parallel on BrowserStack. The parallels can eb modified by updated the `maxInstances` inside `capabilities` object in `resources/conf/wdio-bstack-parallel.conf.js`.
 
@@ -174,7 +173,7 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 
   - To run the entire test suite in parallel on multiple BrowserStack devices, use the following command:
     ```sh
-    cp resources/conf/test-parallel.conf.js resources/conf/test.conf.js && npm run bstack-parallel-devices
+    npm run bstack-parallel-devices
     ```
 ### Mobile application using local or internal environment - Running your tests on BrowserStack using BrowserStackLocal
 
@@ -201,7 +200,7 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 
    - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack device using BrowserStackLocal, use the following command:
       ```sh
-      cp resources/conf/test-local.conf.js resources/conf/test.conf.js && npm run bstack-local
+      npm run bstack-local
       ```
 ### Mobile application using local or internal environment - Run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal
 
@@ -211,7 +210,7 @@ In this section, we will run the test cases on a mobile application using a loca
 
   - To run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal, use the following command:
     ```sh
-    cp resources/conf/test-parallel-local.conf.js resources/conf/test.conf.js && npm run bstack-local-parallel-devices
+    npm run bstack-local-parallel-devices
     ```
 ## Generating Allure Reports
 
