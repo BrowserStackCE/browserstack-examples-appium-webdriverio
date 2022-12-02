@@ -3,50 +3,42 @@ var browserstack = require("browserstack-local");
 var _ = require("lodash");
 
 let timeStamp = new Date().getTime();
-let localIdentifier = `localIdentifier_${timeStamp}`;
-if(defaults.config.capabilities[0].platformName==="Android")
-  {var x=Object.assign({},defaults.config.capabilities[0],{autoGrantPermissions:true,maxInstances:1,"browserstack.localIdentifier": localIdentifier});
-  defaults.config.capabilities[0]=x;
- }
-  else {
-    var x=Object.assign({},defaults.config.capabilities[0],{gpsEnabled:true,automationName:"XCUITest",maxInstances:1,"browserstack.localIdentifier": localIdentifier});
-    defaults.config.capabilities[0]=x;
-   }
+let localIdentifier = timeStamp;
 
 var overrides = {
   specs: ["./test/specs/local/local.spec.js"],
-
-  
-  onPrepare: (config, capabilities) => {
-    console.log("Connecting local");
-    return new Promise((resolve, reject) => {
-      exports.bs_local = new browserstack.Local();
-      exports.bs_local.start(
-        {
-          key: process.env.BROWSERSTACK_ACCESS_KEY,
+  services: [
+    [ 'browserstack',
+    {
+      app: "bs://<android-app-id>"
+      
+      },
+      {
+        browserstackLocal: true,
+        opts: {
           localIdentifier: localIdentifier,
-        },
-        (error) => {
-          if (error) return reject(error);
-          console.log("Connected. Now testing...");
-          resolve();
         }
-      );
-    });
-  },
-  onComplete: function (capabilties, specs) {
-    console.log("Closing local tunnel");
-    return new Promise((resolve, reject) => {
-      exports.bs_local.stop((error) => {
-        if (error) return reject(error);
-        console.log("Stopped BrowserStackLocal");
-        resolve();
-      });
-    });
-  },
+      },
+      
+    ],
+  ],
+  capabilities: [
+    {
+      maxInstances: 1,
+      device: "Samsung Galaxy A51",
+      os_version: "10.0",
+      autoGrantPermissions: true,
+      platformName: "Android",
+      // "browserstack.localIdentifier": localIdentifier,
+    },
+  ],
 };
 
 const tmpConfig = _.defaultsDeep(overrides, defaults.config);
 
+tmpConfig.capabilities.forEach((caps) => {
+  for (const i in tmpConfig.commonCapabilities)
+    caps[i] = caps[i] || tmpConfig.commonCapabilities[i];
+});
 
 exports.config = tmpConfig;
