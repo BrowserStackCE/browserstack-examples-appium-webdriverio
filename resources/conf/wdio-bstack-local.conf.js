@@ -3,36 +3,31 @@ var browserstack = require("browserstack-local");
 var _ = require("lodash");
 
 let timeStamp = new Date().getTime();
-let localIdentifier = timeStamp;
+let localIdentifier = `localIdentifier_${timeStamp}`;
 
 var overrides = {
   specs: ["./test/specs/local/local.spec.js"],
+
   services: [
     [ 'browserstack',
-    {
-      app: "bs://<android-app-id>"
-      
-      },
-      {
+    
+      { app:"bs://<android-app-id>",
         browserstackLocal: true,
-        opts: {
-          localIdentifier: localIdentifier,
-        }
       },
       
     ],
   ],
+  
   capabilities: [
     {
       maxInstances: 1,
       device: "Samsung Galaxy A51",
       os_version: "10.0",
       autoGrantPermissions: true,
-      platformName: "Android",
-      // "browserstack.localIdentifier": localIdentifier,
+      platformName: "Android"
     },
   ],
-};
+  };
 
 const tmpConfig = _.defaultsDeep(overrides, defaults.config);
 
