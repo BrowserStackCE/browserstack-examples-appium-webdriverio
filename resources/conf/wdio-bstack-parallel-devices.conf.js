@@ -9,13 +9,14 @@ var overrides = {
     "./test/specs/user/*.spec.js",
     "./test/specs/cart/*.spec.js",
   ],
+  services: [['browserstack']],
 
   capabilities: [
     {
       maxInstances: 2,
       device: "Samsung Galaxy A51",
       os_version: "10.0",
-      app: process.env.BROWSERSTACK_ANDROID_APP_ID,
+      app: "bs://<android-app-id>",
       autoGrantPermissions: true,
       platformName: "Android",
     },
@@ -26,7 +27,7 @@ var overrides = {
       os_version: "14",
       gpsEnabled: "true",
       automationName: "XCUITest",
-      app: process.env.BROWSERSTACK_IOS_APP_ID,
+      app: "bs://<ios-app-id>",
     },
   ],
 };

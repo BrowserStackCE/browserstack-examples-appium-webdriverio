@@ -9,13 +9,19 @@ var overrides = {
     "./test/specs/user/*.spec.js",
     "./test/specs/cart/*.spec.js",
   ],
+  services: [
+    [ 'browserstack',
+      {
+        app: "bs://<android-app-id>"
+      },  
+    ],
+  ],
 
   capabilities: [
     {
       maxInstances: 2,
       device: "Samsung Galaxy A51",
       os_version: "10.0",
-      app: process.env.BROWSERSTACK_ANDROID_APP_ID,
       autoGrantPermissions: true,
       platformName: "Android",
     },
