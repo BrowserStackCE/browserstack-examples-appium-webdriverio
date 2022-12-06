@@ -9,11 +9,7 @@ var overrides = {
     "./test/specs/user/*.spec.js",
     "./test/specs/cart/*.spec.js",
   ],
-  services: [
-    [ 'browserstack',
-      
-    ]
-  ],
+  services: [['browserstack']],
 
   capabilities: [
     {

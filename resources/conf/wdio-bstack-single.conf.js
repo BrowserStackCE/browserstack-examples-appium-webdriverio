@@ -5,11 +5,9 @@ var overrides = {
   specs: ["./test/specs/e2e/e2e.spec.js"],
   services: [
     [ 'browserstack',
-    {
-      app: "bs://<android-app-id>",
-      
+      {
+        app: "bs://<android-app-id>",
       },
-      
     ],
   ],
 
