@@ -1,6 +1,7 @@
 var defaults = require("./wdio-bstack.conf.js");
 var _ = require("lodash");
-
+let timeStamp = new Date().getTime();
+let localIdentifier = `localIdentifier_${timeStamp}`;
 
 var overrides = {
   specs: ["./test/specs/local/local.spec.js"],
