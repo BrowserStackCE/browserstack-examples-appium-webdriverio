@@ -9,7 +9,15 @@ var overrides = {
     "./test/specs/user/*.spec.js",
     "./test/specs/cart/*.spec.js",
   ],
-  services: [['browserstack']],
+  services: [['browserstack',{
+    testObservability: true,
+            testObservabilityOptions: {
+                'projectName': 'browserstack-examples-appium-webdriverio',
+                'buildName': 'browserstack-examples-appium-webdriverio-build',
+                'buildTag': 'appium wdio'
+            },
+  }
+]],
 
   capabilities: [
     {
