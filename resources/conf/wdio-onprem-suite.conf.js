@@ -24,7 +24,7 @@ var overrides = {
     },
   ],
 
-  services: [
+  services: ['appium',
     ['browserstack', {
         testObservability: true,
         testObservabilityOptions: {
