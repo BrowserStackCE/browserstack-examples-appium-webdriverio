@@ -12,7 +12,13 @@ var overrides = {
   services: [
     [ 'browserstack',
       {
-        app: "bs://<android-app-id>"  
+        app: "bs://<android-app-id>",
+        testObservability: true,
+            testObservabilityOptions: {
+                'projectName': 'browserstack-examples-appium-webdriverio',
+                'buildName': 'browserstack-examples-appium-webdriverio-build',
+                'buildTag': 'appium wdio'
+            },  
       },
     ],
   ],

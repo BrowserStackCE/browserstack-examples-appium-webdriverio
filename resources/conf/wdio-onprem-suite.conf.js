@@ -24,7 +24,18 @@ var overrides = {
     },
   ],
 
-  services: ["appium"],
+  services: ['appium',
+    ['browserstack', {
+        testObservability: true,
+        testObservabilityOptions: {
+            user: process.env.BROWSERSTACK_USERNAME,
+            key: process.env.BROWSERSTACK_ACCESS_KEY,
+            projectName: 'browserstack-examples-appium-webdriverio',
+            buildName: 'browserstack-examples-appium-webdriverio-build',
+            buildTag: 'appium wdio'
+        },
+    }]
+],
 };
 
 exports.config = _.defaultsDeep(overrides, defaults.config);
